@@ -112,3 +112,10 @@ const express = require("express");
 // Create an express application (this represents our server)
 const app = express();
 
+// Tell the server which port to listen on
+const PORT = 3000;
+
+// Start the server and listen for requests
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
