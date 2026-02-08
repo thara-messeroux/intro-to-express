@@ -117,6 +117,10 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
+// Route: When someone visits "/home", send back a Home page message
+app.get("/home", (req, res) => {
+    res.send("<h1>Home Page</h1>");
+});
 
 // Tell the server which port to listen on
 const PORT = 3000;
