@@ -112,6 +112,12 @@ const express = require("express");
 // Create an express application (this represents our server)
 const app = express();
 
+// Route: When someone visits "/", send back a simple message
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
+
+
 // Tell the server which port to listen on
 const PORT = 3000;
 
