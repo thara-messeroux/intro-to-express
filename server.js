@@ -114,7 +114,7 @@ const app = express();
 
 // Route: When someone visits "/", send back a simple message
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("<h1>Hello Express!</h1>");
 });
 
 // Route: When someone visits "/home", send back a Home page message
