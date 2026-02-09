@@ -112,6 +112,16 @@ const express = require("express");
 // Create an express application (this represents our server)
 const app = express();
 
+
+// Route with a URL parameter
+// ":itemNumber" is a placeholder that becomes a real value
+app.get("/item/:itemNumber", (req, res) => {
+    // req.params holds values from the URL
+    const itemNumber = req.params.itemNumber;
+
+    res.send(`<h1>Item Number: ${itemNumber}</h1>`);
+});
+
 // Route: When someone visits "/", send back a simple message
 app.get("/", (req, res) => {
     res.send("<h1>Hello Express!</h1>");
@@ -124,25 +134,6 @@ app.get("/home", (req, res) => {
 
 // Tell the server which port to listen on
 const PORT = 3000;
-
-// Route with a URL parameter
-// ":itemNumber" is a placeholder that becomes a real value
-app.get("/item/:itemNumber", (req, res) => {
-    // req.params holds values from the URL
-    const itemNumber = req.params.itemNumber;
-
-    res.send(`<h1>Item Number: ${itemNumber}</h1>`);
-});
-
-// Route with a URL parameter
-// ":itemNumber" is a placeholder that becomes a real value
-app.get("/item/:itemNumber", (req, res) => {
-    // req.params holds values from the URL
-    const itemNumber = req.params.itemNumber;
-
-    res.send(`<h1>Item Number: ${itemNumber}</h1>`);
-});
-
 
 // Start the server and listen for requests
 app.listen(PORT, () => {
