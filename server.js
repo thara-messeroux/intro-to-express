@@ -105,18 +105,42 @@ app.listen(3000, () => console.log("The server is running on port 3000"));
 
 */
 
-
 // Import the express library so we can use it
 const express = require("express");
 
+// Import morgan (a request logger middleware)
+const morgan = require("morgan");
+
 // Create an express application (this represents our server)
 const app = express();
+
+// Use Morgan middleware (logs each request automatically)
+app.use(morgan("dev"));
+
+// Custom middleware that runs on every request
+app.use((req, res, next) => {
+    console.log("A request was received");
+    next(); // allow the request to continue to the route
+});
+
+// Route: Use query parameters to greet someone with extra info
+app.get("/hello", (req, res) => {
+    const name = req.query.name;
+    const age = req.query.age;
+
+    res.send(`<h1>Hello ${name}! You are ${age} years old.</h1>`);
+});
+
+// http://localhost:3000/hello?name=Alex&age=30
+
 
 // Route: Greet someone by name using a URL parameter
 app.get("/greet/:name", (req, res) => {
     const name = req.params.name;
     res.send(`<h1>Hello, ${name}!</h1>`);
 });
+
+// http://localhost:3000/greet/Alex
 
 
 // Route with a URL parameter
@@ -133,10 +157,14 @@ app.get("/", (req, res) => {
     res.send("<h1>Hello Express!</h1>");
 });
 
+// http://localhost:3000/
+
 // Route: When someone visits "/home", send back a Home page message
 app.get("/home", (req, res) => {
     res.send("<h1>Home Page</h1>");
 });
+
+// http://localhost:3000/home
 
 // Tell the server which port to listen on
 const PORT = 3000;
