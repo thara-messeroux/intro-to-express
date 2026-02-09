@@ -112,6 +112,12 @@ const express = require("express");
 // Create an express application (this represents our server)
 const app = express();
 
+// Route: Greet someone by name using a URL parameter
+app.get("/greet/:name", (req, res) => {
+    const name = req.params.name;
+    res.send(`<h1>Hello, ${name}!</h1>`);
+});
+
 
 // Route with a URL parameter
 // ":itemNumber" is a placeholder that becomes a real value
